@@ -1,3 +1,4 @@
+import 'package:daily_brief/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +11,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       title: 'Flutter Demo',
+      routes: {
+        HomeScreen.routeName : (_)=> HomeScreen(),
+      },
+      initialRoute: HomeScreen.routeName,
     );
   }
 }
