@@ -24,7 +24,7 @@ abstract class ApiManager {
         return sourcesResponse.sources!;
       }
       else {
-        return [] ;
+       throw Exception(sourcesResponse.message);
       }
   }
 
