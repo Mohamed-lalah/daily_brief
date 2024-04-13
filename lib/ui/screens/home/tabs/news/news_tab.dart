@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../data/api/api_manager.dart';
 import '../../../../../model/SourcesResponse.dart';
+import 'news_list/news_list.dart';
 
 class NewsTab extends StatefulWidget {
    NewsTab({super.key});
@@ -31,10 +32,12 @@ class _NewsTabState extends State<NewsTab> {
                  else
                    return const Center(child: CircularProgressIndicator(
                      color:Color(0xff39A552) ,));
-               }),
+               }
+               ),
     );
   }
 
+  
   Widget buildTabs(List<Source> list ) {
    return  DefaultTabController(
      length: list.length,
@@ -61,7 +64,7 @@ class _NewsTabState extends State<NewsTab> {
          Expanded(
            child: TabBarView(
                children:
-                 list.map((source) => Container(color: Colors.red,)).toList()
+                 list.map((source) => NewsList(sourceId:source.id!)).toList()
 
            ),
          )
@@ -69,6 +72,7 @@ class _NewsTabState extends State<NewsTab> {
      ),
    );
   }
+
 
   Widget buildSourceTab(String name,bool isSelected) {
     return Container(
