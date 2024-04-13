@@ -1,5 +1,6 @@
 import 'package:daily_brief/data/api/api_manager.dart';
 import 'package:daily_brief/model/ArticleResponse.dart';
+import 'package:daily_brief/ui/widgets/article_widget.dart';
 import 'package:daily_brief/ui/widgets/error_view.dart';
 import 'package:daily_brief/ui/widgets/loading.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,11 @@ class NewsList extends StatelessWidget {
   }
 
   Widget buildArticleView( List <Articles> articles ) {
-    return Center();
+
+    return ListView.builder(
+        itemCount: articles.length,
+        itemBuilder: (context , index ){
+          return ArtilceWidget(aritcles:  articles[index],);
+        });
   }
 }
