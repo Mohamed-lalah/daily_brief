@@ -11,22 +11,27 @@ class ArtilceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-       ClipRRect(
-         borderRadius: BorderRadius.circular(22),
-         child: CachedNetworkImage(imageUrl : aritcles.urlToImage!,
-         placeholder: (_, __)=>Center(child: CircularProgressIndicator()),
-         errorWidget: (_,__,___)=>Icon(Icons.error),
-         height: MediaQuery.of(context).size.height*0.12,),
-       ),
-        Text(aritcles.source?.name??""),
-        SizedBox(height: 4,),
-        Text(aritcles.title??""),
-        SizedBox(height: 4,),
-        Text(aritcles.publishedAt??"",textAlign: TextAlign.end,),
-      ],
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+         ClipRRect(
+           borderRadius: BorderRadius.circular(15),
+           child: CachedNetworkImage(
+             fit: BoxFit.fill,
+             imageUrl : aritcles.urlToImage!,
+           placeholder: (_, __)=>Center(child: CircularProgressIndicator()),
+           errorWidget: (_,__,___)=>Icon(Icons.error),
+           height: MediaQuery.of(context).size.height*.25,),
+         ),
+          Text(aritcles.source?.name??""),
+          SizedBox(height: 4,),
+          Text(aritcles.title??""),
+          SizedBox(height: 4,),
+          Text(aritcles.publishedAt??"",textAlign: TextAlign.end,),
+        ],
+      ),
     );
   }
 }
