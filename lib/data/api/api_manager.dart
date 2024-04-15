@@ -11,9 +11,10 @@ abstract class ApiManager {
   static const String endPoint= "v2/top-headlines/sources";
   static const String endPointArtilce= "/v2/everything";
 
-  static Future< List <Source>> getSources() async{
 
-    Uri  url = Uri.parse("https://newsapi.org/v2/top-headlines/sources?apiKey=$apiKey");
+  static Future< List <Source>> getSources(String categoryId) async{
+
+    Uri  url = Uri.parse("https://newsapi.org/v2/top-headlines/sources?apiKey=$apiKey&category=$categoryId");
 
       Response response =await get(url);
 

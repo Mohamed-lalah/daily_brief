@@ -3,7 +3,9 @@ import 'package:daily_brief/ui/screens/home/tabs/categories/category_widget.dart
 import 'package:flutter/material.dart';
 
 class CategoriesTab extends StatelessWidget {
-  const CategoriesTab({super.key});
+  const CategoriesTab({super.key,required this.categoryClick});
+
+  final Function(CategoryDm) categoryClick ;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,11 @@ class CategoriesTab extends StatelessWidget {
                 mainAxisSpacing: 22
               ),
 
-              itemBuilder: (context, int )=>CategoryWidget(  categoryDm:  CategoryDm.dmList[int],)),
+              itemBuilder: (context, int )=>InkWell(
+                  onTap: (){
+                     categoryClick(CategoryDm.dmList[int]);
+                  },
+                  child: CategoryWidget(  categoryDm:  CategoryDm.dmList[int],))),
         ),
       )
       ],

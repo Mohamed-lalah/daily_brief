@@ -6,8 +6,8 @@ import '../../../../../model/SourcesResponse.dart';
 import 'news_list/news_list.dart';
 
 class NewsTab extends StatefulWidget {
-   NewsTab({super.key});
-
+   NewsTab({super.key, required this.categoryId});
+   late String categoryId;
   @override
   State<NewsTab> createState() => _NewsTabState();
 }
@@ -20,7 +20,7 @@ class _NewsTabState extends State<NewsTab> {
     return Scaffold(
            body:
            FutureBuilder(
-               future: ApiManager.getSources(),
+               future: ApiManager.getSources(widget.categoryId),
                builder: (context , snapshot){
                   if (snapshot.hasData){
                  return buildTabs(snapshot.data!);

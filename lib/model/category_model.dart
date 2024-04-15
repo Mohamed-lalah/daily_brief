@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 
   static List <CategoryDm> dmList = [
 
-    CategoryDm(id: "sport" ,imagePath: "assets/sports.png" , backGroundColor: Colors.red[900]!,title: "Sports" ,isLeftSide: true),
+    CategoryDm(id: "sports" ,imagePath: "assets/sports.png" , backGroundColor: Colors.red[900]!,title: "Sports" ,isLeftSide: true),
 
     CategoryDm(id: "technology" ,imagePath: "assets/Politics.png" , backGroundColor: Colors.blue[900]!,title: "Technology" ,isLeftSide: false),
 
