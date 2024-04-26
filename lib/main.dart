@@ -1,5 +1,7 @@
 import 'package:daily_brief/ui/screens/home/home_screen.dart';
+import 'package:daily_brief/ui/screens/home/tabs/news/news_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
