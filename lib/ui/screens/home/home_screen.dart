@@ -1,4 +1,4 @@
-import 'package:daily_brief/data/api/api_manager.dart';
+import 'package:daily_brief/data/repos/news_repo/data_sources/online_data_source.dart';
 import 'package:daily_brief/model/category_model.dart';
 import 'package:daily_brief/ui/screens/home/tabs/categories/categories_tab.dart';
 import 'package:daily_brief/ui/screens/home/tabs/news/news_tab.dart';

@@ -1,4 +1,4 @@
-import 'package:daily_brief/data/api/api_manager.dart';
+import 'package:daily_brief/data/repos/news_repo/data_sources/online_data_source.dart';
 import 'package:daily_brief/model/ArticleResponse.dart';
 import 'package:daily_brief/ui/widgets/article_widget.dart';
 import 'package:daily_brief/ui/widgets/error_view.dart';
@@ -14,7 +14,7 @@ class NewsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
 
-        future: ApiManager.getArticles(sourceId),
+        future: OnlineDataSource().getArticles(sourceId),
 
         builder: (context , snapshot ){
           if (snapshot.hasData){

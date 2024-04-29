@@ -4,7 +4,7 @@ import 'package:daily_brief/ui/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../data/api/api_manager.dart';
+import '../../../../../data/repos/news_repo/data_sources/online_data_source.dart';
 import '../../../../../model/SourcesResponse.dart';
 import 'news_list/news_list.dart';
 import 'package:provider/provider.dart';
