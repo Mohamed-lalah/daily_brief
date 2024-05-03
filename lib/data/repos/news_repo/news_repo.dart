@@ -14,7 +14,7 @@ NewsRepo(this.onlineDataSource, this.offlineDataSource);
     ConnectivityResult connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult==ConnectivityResult.wifi|| connectivityResult== ConnectivityResult.mobile){
       SourcesResponse? sourcesResponse = await  onlineDataSource.getSources(categoryId);
-      offlineDataSource.saveSources(sourcesResponse);
+      offlineDataSource.saveSources(sourcesResponse,categoryId);
       return sourcesResponse;
     }
 

@@ -6,7 +6,7 @@ class SourcesResponse {
       this.status, 
       this.sources,this.code, this.message});
 
-  SourcesResponse.fromJson(Map json) {
+  SourcesResponse.fromJson(dynamic json) {
     status = json['status'];
     code = json["code"];
     message= json["message"];

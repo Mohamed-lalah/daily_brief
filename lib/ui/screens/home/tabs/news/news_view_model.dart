@@ -20,8 +20,14 @@ class NewsTabViewModel extends ChangeNotifier  {
       notifyListeners();
    try {
   SourcesResponse? sourcesResponse =await newsRepo.getSources(id);
-     isLoading = false ;
+
+   if (sourcesResponse!=null && sourcesResponse.sources?.isNotEmpty==true ) {
+     isLoading = false;
+     sources = sourcesResponse.sources!;
      notifyListeners();
+   }
+   else {
+     throw "something went wrong ";}
    }
    catch(error){
     isLoading = false ;
