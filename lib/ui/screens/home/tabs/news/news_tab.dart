@@ -3,6 +3,7 @@ import 'package:daily_brief/ui/widgets/error_view.dart';
 import 'package:daily_brief/ui/widgets/loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../data/repos/news_repo/data_sources/online_data_source.dart';
 import '../../../../../model/SourcesResponse.dart';
@@ -36,23 +37,22 @@ class _NewsTabState extends State<NewsTab> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (_)=>viewModel,
-        child: Consumer<NewsTabViewModel>(
-          builder: (context, viewModel,_){
-            Widget? currentView ;
-            if ( viewModel.isLoading){
-              currentView= Loading();
-            }
-            else if (viewModel.sources.isNotEmpty){
-              currentView= buildTabs(viewModel.sources);
-            }
-            else {
-              currentView= ErrorView(errorMessage: viewModel.errorText??"Something went wrong ");
-            }
-            return currentView;
-          },
-        ));
+    return BlocBuilder <NewsTabViewModel, dynamic>(
+      bloc: viewModel,
+      builder: (context, state){
+        Widget? currentView ;
+        if ( state is NewsTabLoadingState){
+          currentView= Loading();
+        }
+        else if (state is NewsTabSuceesState){
+          currentView= buildTabs(state.sources);
+        }
+        else {
+          currentView= ErrorView(errorMessage: (state as NewsTabErrorState).errorMessage);
+        }
+        return currentView;
+      },
+    );
   }
 
   
