@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily_brief/ui/screens/home/home_screen.dart';
 import 'package:daily_brief/ui/screens/home/tabs/news/news_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
@@ -16,6 +20,8 @@ void main() async{
       Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
 
   await FirebaseFirestore.instance.disableNetwork();
+  final Directory appDocumentsDir = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentsDir.path);
 
   runApp(const MyApp());
 }
