@@ -22,7 +22,7 @@ class NewsTab extends StatefulWidget {
 class _NewsTabState extends State<NewsTab> {
 
  int currentTabIndex= 0;
- late NewsTabViewModel viewModel;
+  NewsTabViewModel viewModel=NewsTabViewModel();
  @override
   void initState() {
     // TODO: implement initState

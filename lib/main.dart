@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:daily_brief/ui/screens/ScreenDetail/screen_detail.dart';
 import 'package:daily_brief/ui/screens/home/home_screen.dart';
 import 'package:daily_brief/ui/screens/home/tabs/news/news_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routes: {
         HomeScreen.routeName : (_)=> HomeScreen(),
+        ScreenDetails.routeName:(_)=>ScreenDetails()
       },
       initialRoute: HomeScreen.routeName,
     );
