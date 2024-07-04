@@ -35,11 +35,12 @@ import 'package:http/http.dart' ;
 
 
 
-   Future <List <Articles>> getArticles(String sourceId)async{
+   Future <List <Articles>> getArticles({String? sourceId ,String? query})async{
 
     Uri url = Uri.https(baseUrl, endPointArtilce,{
       "apiKey" : apiKey,
       "sources" : sourceId,
+      "q": query
     });
 
     var serverResponse= await get(url);

@@ -6,6 +6,11 @@ import 'package:daily_brief/ui/screens/home/tabs/settings/setting_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../model/ArticleResponse.dart';
+import '../../widgets/article_widget.dart';
+import '../../widgets/error_view.dart';
+import '../../widgets/loading.dart';
+
 class HomeScreen extends StatefulWidget {
    HomeScreen({super.key});
   static const  String routeName = "home screen";
@@ -47,6 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ),
             title: Text("Daily Brief"),
+
+
+              actions: currentTab is NewsTab?
+              [
+              IconButton(onPressed: (){
+                showSearch(context: context, delegate: NewsDelegate());
+              }, icon: Icon(Icons.search),color: Colors.white,iconSize: 30,)]: null
           ),
           drawer: buildDarwer(),
           body: currentTab
@@ -57,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   onCategoryClick (CategoryDm categoryDm){
     currentTab= NewsTab(categoryId: categoryDm.id,);
+
     setState(() {});
 
   }
@@ -106,4 +119,55 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 }
+class NewsDelegate extends  SearchDelegate{
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    return [
+      Icon(Icons.search, size:  30 , color: Colors.black,)
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return Text( "");
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return FutureBuilder(
+
+        future: OnlineDataSource().getArticles(query: query),
+
+        builder: (context , snapshot ){
+          if (snapshot.hasData){
+            return buildArticleView(snapshot.data!);
+          }
+          else if (snapshot.hasError){
+            return ErrorView(errorMessage: snapshot.error.toString());
+          }
+          else {
+            return Loading();
+          }
+        });
+
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+         return Container(
+         );
+  }
+
+}
+Widget buildArticleView( List <Articles> articles ) {
+
+  return ListView.builder(
+      itemCount: articles.length,
+      itemBuilder: (context , index ){
+        return ArtilceWidget(aritcles:  articles[index],);
+      });
+}
+
 

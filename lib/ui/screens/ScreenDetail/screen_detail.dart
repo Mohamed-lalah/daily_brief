@@ -72,14 +72,14 @@ class ScreenDetails extends StatelessWidget {
                   ),
                    SizedBox(height: height*0.03,),
 
-                   Text(arguments.content??"",style: const TextStyle(
+                   Text(arguments.description??"",style: const TextStyle(
                      color: Color(0xff42505C),fontWeight: FontWeight.normal,fontSize: 13
                    ),),
                    SizedBox(height: height*0.05,),
                     InkWell(
                       highlightColor: Colors.grey,
-                      onTap: (){
-                        Navigator.pushNamed(context, WebViewScreen.routeName, arguments: arguments.url);
+                      onTap: ()async{
+                        Navigator.pushNamed(context, WebViewScreen.routeName, arguments: arguments.url??"");
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
