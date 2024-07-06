@@ -29,8 +29,8 @@ class _ArtilceWidgetState extends State<ArtilceWidget> {
            ClipRRect(
              borderRadius: BorderRadius.circular(15),
              child: CachedNetworkImage(
-               fit: BoxFit.fill,
-               imageUrl : widget.aritcles.urlToImage!,
+               fit: BoxFit.cover,
+               imageUrl : widget.aritcles.urlToImage??"https://images.app.goo.gl/dBoh8yB8N4iCgPuY6",
              placeholder: (_, __)=>Center(child: CircularProgressIndicator()),
              errorWidget: (_,__,___)=>Icon(Icons.error),
              height: MediaQuery.of(context).size.height*.25,),
