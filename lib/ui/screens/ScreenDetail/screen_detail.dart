@@ -73,7 +73,7 @@ class ScreenDetails extends StatelessWidget {
                    SizedBox(height: height*0.03,),
 
                    Text(arguments.description??"",style: const TextStyle(
-                     color: Color(0xff42505C),fontWeight: FontWeight.normal,fontSize: 13
+                     color: Color(0xff42505C),fontWeight: FontWeight.normal,fontSize: 14
                    ),),
                    SizedBox(height: height*0.05,),
                     InkWell(
