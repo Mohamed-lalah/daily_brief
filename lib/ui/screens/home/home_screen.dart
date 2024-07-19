@@ -5,6 +5,7 @@ import 'package:daily_brief/ui/screens/home/tabs/news/news_tab.dart';
 import 'package:daily_brief/ui/screens/home/tabs/settings/setting_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../model/ArticleResponse.dart';
 import '../../widgets/article_widget.dart';
@@ -41,27 +42,37 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
         },
-        child: Scaffold(
-          drawerEnableOpenDragGesture: false,
-          appBar: AppBar(
-            centerTitle: true,
-            toolbarHeight: MediaQuery.of(context).size.height*0.09,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom:Radius.circular(22)
-              )
-            ),
-            title: Text("Daily Brief"),
-
-
-              actions: currentTab is NewsTab?
-              [
-              IconButton(onPressed: (){
-                showSearch(context: context, delegate: NewsDelegate());
-              }, icon: Icon(Icons.search),color: Colors.white,iconSize: 30,)]: null
+        child: Container(
+          decoration:  const BoxDecoration(
+            image: DecorationImage(
+              image:AssetImage("assets/background.png"), fit: BoxFit.fill
+            )
           ),
-          drawer: buildDarwer(),
-          body: currentTab
+          child: Scaffold(
+            drawerEnableOpenDragGesture: false,
+            appBar: AppBar(
+              backgroundColor: Color(0xff39A552),
+              centerTitle: true,
+              toolbarHeight: MediaQuery.of(context).size.height*0.12,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom:Radius.circular(30)
+                )
+              ),
+              title: Text("Daily Brief",style: GoogleFonts.exo(
+                color: Colors.white,
+                fontWeight: FontWeight.normal,
+                fontSize: 22
+              ),),
+                actions: currentTab is NewsTab?
+                [
+                IconButton(onPressed: (){
+                  showSearch(context: context, delegate: NewsDelegate());
+                }, icon: Icon(Icons.search),color: Colors.white,iconSize: 30,)]: null
+            ),
+            drawer: buildDarwer(),
+            body: currentTab
+          ),
         ),
       ),
     );
@@ -78,11 +89,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return  Drawer(
       child: Column(
         children: [
-          const DrawerHeader(
+           DrawerHeader(
               decoration: BoxDecoration(
                 color: Color(0xff39A552)
               ),
-              child: Center(child: Text("Daily Brief"))),
+              child: Center(child: Text("Daily Brief",style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 26
+              ),))),
 
 
           buildDrawerRow("Categories",Icons.list,(){
@@ -109,9 +124,13 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Row(
         children: [
-          Icon(icon,color: Colors.black ,size: 35,),
-          SizedBox(width: 8,),
-          Text(title),
+          Icon(icon,color: Colors.black ,size: 30,),
+          SizedBox(width: 12,),
+          Text(title, style: GoogleFonts.poppins(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff303030)
+          ),),
         ],
       ),
     );
